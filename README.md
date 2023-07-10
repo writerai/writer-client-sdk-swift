@@ -23,7 +23,7 @@ You can add `Writer` to your project directly in Xcode `(File > Add Packages...)
 
 ```bash
 dependencies: [
-    .package(url: "", .upToNextMajor(from: "0.0.3"))
+    .package(url: "https://github.com/writerai/writer-client-sdk-swift", .upToNextMajor(from: "0.0.3"))
 ]
 ```
 
