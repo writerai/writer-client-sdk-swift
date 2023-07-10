@@ -1,9 +1,14 @@
-# Writer
-
-![Platform](https://img.shields.io/badge/Platform-iOS-lightgray)
-![Swift Version](https://img.shields.io/badge/Swift-5.6-orange.svg)
-
-
+<div align="center">
+    <picture>
+        <source srcset="https://user-images.githubusercontent.com/6267663/223574357-9a053550-02f9-49f1-b453-1b11db148d7b.svg" media="(prefers-color-scheme: dark)" width="500">
+        <img src="https://user-images.githubusercontent.com/6267663/223574369-77805bfe-6d95-44e8-ac48-f9494101e1dc.svg" width="500">
+    </picture>
+    <h1>iOS SDK [Not Yet Published]</h1>
+   <p>AI for everyone.</p>
+   <a href="https://dev.writer.com/docs"><img src="https://img.shields.io/static/v1?label=Docs&message=API Ref&color=000000&style=for-the-badge" /></a>
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" /></a>
+  <a href="https://github.com/writerai/writer-client-sdk-swift/releases"><img src="https://img.shields.io/github/v/release/writerai/writer-client-sdk-swift?sort=semver&style=for-the-badge" /></a>
+</div>
 
 ## Requirements
 
@@ -24,6 +29,16 @@ dependencies: [
 
 <!-- End SDK Installation -->
 
+## Authentication
+
+Writer authenticates your API requests using your account’s API keys. If you do not include your key when making an API request, or use one that is incorrect or outdated, Writer returns an error.
+
+Your API keys are available in the account dashboard. We include randomly generated API keys in our code examples if you are not logged in. Replace these with your own or log in to see code examples populated with your own API keys.
+
+<img width="1070" alt="writer-auth" src="https://user-images.githubusercontent.com/6267663/223578295-89087c24-c55a-48bf-b74a-5f057e21e14f.png">
+
+If you cannot see your secret API keys in the Dashboard, this means you do not have access to them. Contact your Writer account owner and ask to be added to their team as a developer.
+
 ## Usage
 
 <!-- Start SDK Example Usage -->
@@ -36,7 +51,7 @@ let response = try await client.aiContentDetector.detectContent(
     request: Operations.DetectContentRequest(
         contentDetectorRequest: Shared.ContentDetectorRequest(
             input: "corrupti"
-        ), 
+        ),
     )
 )
 
