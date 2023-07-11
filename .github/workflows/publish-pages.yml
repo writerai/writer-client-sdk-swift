@@ -1,0 +1,30 @@
+name: Generate Documentation
+on:
+  push:
+    branches: ["main"]
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+jobs:
+  generate:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: macos-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+      - name: Build Documentation
+        run: |
+          xcodebuild docbuild -scheme $(xcodebuild -list -json | jq -r ".workspace.schemes[0]") -destination "platform=macOS" OTHER_DOCC_FLAGS="--transform-for-static-hosting --hosting-base-path writer-client-sdk-swift --output-path ./docs" MACOSX_DEPLOYMENT_TARGET="10.15"
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: 'docs'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
